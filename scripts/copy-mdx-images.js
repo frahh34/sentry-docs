@@ -65,7 +65,9 @@ function copyImages() {
   imgDirs.forEach(imgDir => {
     const files = fs.readdirSync(imgDir);
     const imageFiles = files.filter(file => file.match(/\.(png|jpg|jpeg|gif)$/i));
-    console.log(`\nFound ${imageFiles.length} images in ${path.relative(DOCS_DIR, imgDir)}:`);
+    console.log(
+      `\nFound ${imageFiles.length} images in ${path.relative(DOCS_DIR, imgDir)}:`
+    );
     imageFiles.forEach(file => console.log(`- ${file}`));
 
     imageFiles.forEach(file => {
@@ -73,7 +75,7 @@ function copyImages() {
       // The MDX plugin expects paths like /mdx-images/img-filename.png
       const encodedName = `img-${file}`;
       const dest = path.join(PUBLIC_MDX_IMAGES, encodedName);
-      
+
       if (!fs.existsSync(dest)) {
         fs.copyFileSync(src, dest);
         copied++;
@@ -88,4 +90,4 @@ function copyImages() {
   console.log(`Images are in: ${PUBLIC_MDX_IMAGES}`);
 }
 
-copyImages(); 
+copyImages();

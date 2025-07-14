@@ -1,0 +1,34 @@
+The Dart SDK automatically sets several default attributes on all log entries to provide context and improve debugging:
+
+### Core Attributes
+
+- `sentry.environment`: The environment set in the SDK if defined
+- `sentry.release`: The release set in the SDK if defined
+- `sentry.trace.parent_span_id`: The span ID of the span that was active when the log was collected (only set if there was an active span)
+- `sentry.sdk.name`: The name of the SDK that sent the log (`sentry.dart` or `sentry.dart.flutter`)
+- `sentry.sdk.version`: The version of the SDK that sent the log
+
+### Message Template Attributes
+
+If the log was parameterized using format specifiers, the SDK will also set:
+
+- `sentry.message.template`: The parameterized template string
+- `sentry.message.parameter.X`: The parameters to the template string, where X is the parameter's position
+
+### User Attributes
+
+If user information is available in the current scope:
+
+- `user.id`: The user ID
+- `user.name`: The username
+- `user.email`: The email address
+
+### Mobile Device Attributes
+
+For mobile Flutter applications:
+
+- `os.name`: The name of the operating system (`iOS` or `Android`)
+- `os.version`: The version of the operating system
+- `device.brand`: The brand of the device (e.g., `Apple`, `Samsung`)
+- `device.model`: The model of the device (e.g., `iPhone 15 Pro Max`, `SM-G973F`)
+- `device.family`: The family of the device

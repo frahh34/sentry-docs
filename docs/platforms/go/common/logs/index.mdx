@@ -128,6 +128,39 @@ slogger.Info("Implementing slog.Logger")
 
 We're actively working on adding more integration support for Logs. Currently, we are looking at adding support for [`zerolog`](https://pkg.go.dev/github.com/rs/zerolog). You can follow this [GitHub issue](https://github.com/getsentry/sentry-go/issues/1015) to track progress.
 
+## Default Attributes
+
+The Go SDK automatically sets several default attributes on all log entries to provide context and improve debugging:
+
+### Core Attributes
+
+- `sentry.environment`: The environment set in the SDK if defined
+- `sentry.release`: The release set in the SDK if defined
+- `sentry.trace.parent_span_id`: The span ID of the span that was active when the log was collected (only set if there was an active span)
+- `sentry.sdk.name`: The name of the SDK that sent the log (`sentry.go`)
+- `sentry.sdk.version`: The version of the SDK that sent the log
+
+### Message Template Attributes
+
+If the log was parameterized using format specifiers (like `%v`), the SDK will also set:
+
+- `sentry.message.template`: The parameterized template string
+- `sentry.message.parameter.X`: The parameters to the template string, where X is the parameter's position
+
+### User Attributes
+
+If user information is available in the current scope:
+
+- `user.id`: The user ID
+- `user.name`: The username
+- `user.email`: The email address
+
+### Server Attributes
+
+For backend applications:
+
+- `server.address`: The address of the server that sent the log (equivalent to server_name attached to errors and transactions)
+
 ## Options
 
 ### BeforeSendLog
@@ -157,3 +190,5 @@ if err := sentry.Init(sentry.ClientOptions{
 ### Debug
 
 If the `Debug` init option is set to true, calls to the `sentry.Logger` will also print to the console with the appropriate log level.
+
+```

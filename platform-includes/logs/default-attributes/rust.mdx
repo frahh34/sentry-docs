@@ -1,30 +1,9 @@
 The Rust SDK automatically sets several default attributes on all log entries to provide context and improve debugging:
 
-### Core Attributes
+<Include name="logs/default-attributes/core.mdx" />
 
-- `sentry.environment`: The environment set in the SDK if defined
-- `sentry.release`: The release set in the SDK if defined
-- `sentry.trace.parent_span_id`: The span ID of the span that was active when the log was collected (only set if there was an active span)
-- `sentry.sdk.name`: The name of the SDK that sent the log (`sentry.rust`)
-- `sentry.sdk.version`: The version of the SDK that sent the log
+<Include name="logs/default-attributes/message-template/rust.mdx" />
 
-### Message Template Attributes
+<Include name="logs/default-attributes/user.mdx" />
 
-If the log was parameterized using format specifiers, the SDK will also set:
-
-- `sentry.message.template`: The parameterized template string
-- `sentry.message.parameter.X`: The parameters to the template string, where X is the parameter's position
-
-### User Attributes
-
-If user information is available in the current scope:
-
-- `user.id`: The user ID
-- `user.name`: The username
-- `user.email`: The email address
-
-### Server Attributes
-
-For backend applications:
-
-- `server.address`: The address of the server that sent the log (equivalent to server_name attached to errors and transactions)
+<Include name="logs/default-attributes/server.mdx" />

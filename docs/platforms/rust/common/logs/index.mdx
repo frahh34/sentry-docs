@@ -204,18 +204,6 @@ fn main() {
 We're always looking to expand integration support for Logs.
 If you'd like to see support for additional logging libraries, please open a [new issue](https://github.com/getsentry/sentry-rust/issues/new/choose) with your request.
 
-## Default Attributes
-
-The Rust SDK automatically sets several default attributes on all log entries to provide context and improve debugging:
-
-<Include name="logs/default-attributes/core.mdx" />
-
-<Include name="logs/default-attributes/message-template/rust.mdx" />
-
-<Include name="logs/default-attributes/user.mdx" />
-
-<Include name="logs/default-attributes/server.mdx" />
-
 ## Options
 
 ### `before_send_log`
@@ -236,3 +224,15 @@ let _guard = sentry::init(("___PUBLIC_DSN___", sentry::ClientOptions {
     ..Default::default()
 }));
 ```
+
+## Default Attributes
+
+The Rust SDK automatically sets several default attributes on all log entries to provide context and improve debugging:
+
+<Include name="logs/default-attributes/core.mdx" />
+
+<Include name="logs/default-attributes/message-template/rust.mdx" />
+
+<Include name="logs/default-attributes/user.mdx" />
+
+<Include name="logs/default-attributes/server.mdx" />

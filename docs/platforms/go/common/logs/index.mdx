@@ -128,18 +128,6 @@ slogger.Info("Implementing slog.Logger")
 
 We're actively working on adding more integration support for Logs. Currently, we are looking at adding support for [`zerolog`](https://pkg.go.dev/github.com/rs/zerolog). You can follow this [GitHub issue](https://github.com/getsentry/sentry-go/issues/1015) to track progress.
 
-## Default Attributes
-
-The Go SDK automatically sets several default attributes on all log entries to provide context and improve debugging:
-
-<Include name="logs/default-attributes/core.mdx" />
-
-<Include name="logs/default-attributes/message-template/go.mdx" />
-
-<Include name="logs/default-attributes/user.mdx" />
-
-<Include name="logs/default-attributes/server.mdx" />
-
 ## Options
 
 ### BeforeSendLog
@@ -169,3 +157,15 @@ if err := sentry.Init(sentry.ClientOptions{
 ### Debug
 
 If the `Debug` init option is set to true, calls to the `sentry.Logger` will also print to the console with the appropriate log level.
+
+## Default Attributes
+
+The Go SDK automatically sets several default attributes on all log entries to provide context and improve debugging:
+
+<Include name="logs/default-attributes/core.mdx" />
+
+<Include name="logs/default-attributes/message-template/go.mdx" />
+
+<Include name="logs/default-attributes/user.mdx" />
+
+<Include name="logs/default-attributes/server.mdx" />
